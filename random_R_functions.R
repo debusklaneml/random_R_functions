@@ -27,3 +27,10 @@ import_all_csv <- function() {
   csv <<- csv
 }
 
+test_fun <- function(df = FALSE) {
+  tempcsv = dir(pattern=".csv", all.files = T)
+  csv = map(set_names(tempcsv, tempcsv), read_csv)
+  if (df) list2env(csv, .GlobalEnv)
+  else
+    csv <<- csv
+}
