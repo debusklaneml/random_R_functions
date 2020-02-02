@@ -34,3 +34,11 @@ test_fun <- function(df = FALSE) {
   else
     csv <<- csv
 }
+
+test_fun_1 <- function(df = FALSE) {
+  tempcsv = dir(pattern=".csv", all.files = T)
+  csv = map(set_names(tempcsv, tempcsv), read_csv)
+  if (df) list2env(csv, .GlobalEnv)
+  else
+    csv <<- csv
+}
